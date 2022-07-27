@@ -8,6 +8,27 @@
  */
 class Solution {
 public:
+    ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
+        ListNode* temp1 = headA;
+        ListNode* temp2 = headB;
+        int ctr = 0;
+        while(temp1 != temp2){
+            if(!temp1 || !temp2){
+                ctr++;
+            }
+            if(ctr > 2){
+                return NULL;
+            }
+            temp1 = temp1? temp1->next: headB;
+            temp2 = temp2 ? temp2->next : headA;
+        }
+        return temp1;
+    }
+    
+    /**
+        Alternate Appraoch using size and recursion. Same TC and SC
+    
+    **/
     // int getSize(ListNode* node){
     //     ListNode* curr = node;
     //     int res = 0;
@@ -31,24 +52,9 @@ public:
     //     }
     //     return headA;
     // }
-    
-    ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
-        // int n = getSize(headA);
-        // int m = getSize(headB);
-        // return findIntersectionRec(headA, headB, n, m);
-        ListNode* temp1 = headA;
-        ListNode* temp2 = headB;
-        int ctr = 0;
-        while(temp1 != temp2){
-            if(!temp1 || !temp2){
-                ctr++;
-            }
-            if(ctr > 2){
-                return NULL;
-            }
-            temp1 = temp1? temp1->next: headB;
-            temp2 = temp2 ? temp2->next : headA;
-        }
-        return temp1;
-    }
+    // ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
+    //     int n = getSize(headA);
+    //     int m = getSize(headB);
+    //     return findIntersectionRec(headA, headB, n, m);
+    // }
 };
