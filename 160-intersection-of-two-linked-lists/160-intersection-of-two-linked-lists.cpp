@@ -8,29 +8,29 @@
  */
 class Solution {
 public:
-    int getSize(ListNode* node){
-        ListNode* curr = node;
-        int res = 0;
-        while(curr){
-            res++;
-            curr= curr->next;
-        }
-        return res;
-    }
-    ListNode * findIntersectionRec(ListNode *headA, ListNode *headB, int n, int m){
-        if(n > m){
-            return findIntersectionRec(headB, headA, m, n);
-        }
-        while(m > n){
-            headB = headB->next;
-            m--;
-        }
-        while(headA!=headB){
-            headA = headA->next;
-            headB = headB->next;
-        }
-        return headA;
-    }
+    // int getSize(ListNode* node){
+    //     ListNode* curr = node;
+    //     int res = 0;
+    //     while(curr){
+    //         res++;
+    //         curr= curr->next;
+    //     }
+    //     return res;
+    // }
+    // ListNode * findIntersectionRec(ListNode *headA, ListNode *headB, int n, int m){
+    //     if(n > m){
+    //         return findIntersectionRec(headB, headA, m, n);
+    //     }
+    //     while(m > n){
+    //         headB = headB->next;
+    //         m--;
+    //     }
+    //     while(headA!=headB){
+    //         headA = headA->next;
+    //         headB = headB->next;
+    //     }
+    //     return headA;
+    // }
     
     ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
         // int n = getSize(headA);
