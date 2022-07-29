@@ -38,13 +38,9 @@ public:
             slow = slow->next;
             fast = fast->next;
         }
-        ListNode* res = slow->next;
-        slow->next = NULL;
-        fast = res;
-        while(fast->next){
-            fast = fast->next;
-        }
         fast->next = head;
-        return res;
+        head = slow->next;
+        slow->next = NULL;
+        return head;
     }
 };
