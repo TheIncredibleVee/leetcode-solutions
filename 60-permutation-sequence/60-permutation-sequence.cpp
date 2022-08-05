@@ -16,14 +16,9 @@ public:
         vector<int> dp(n+1);
         factorial(dp, n);
         while(k > 0 && n > 0){
-            if(k < dp[n-1]){
-                res += s[0];
-                s = s.substr(1);
-            }else{
-                res += s[k/dp[n-1]];
-                s.erase(s.begin() + k/dp[n-1]);
-                k %= dp[n-1];
-            }
+            res += s[k/dp[n-1]];
+            s.erase(s.begin() + k/dp[n-1]);
+            k %= dp[n-1];
             n--;
         }
         if(!s.empty()){
