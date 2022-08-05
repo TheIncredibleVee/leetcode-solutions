@@ -15,7 +15,7 @@ public:
         k-=1;
         vector<int> dp(n+1);
         factorial(dp, n);
-        while(k > 0 && n > 0){
+        while(n > 0){
             res += s[k/dp[n-1]];
             s.erase(s.begin() + k/dp[n-1]);
             k %= dp[n-1];
