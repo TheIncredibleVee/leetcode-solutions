@@ -21,9 +21,6 @@ public:
             k %= dp[n-1];
             n--;
         }
-        if(!s.empty()){
-            res+=s;
-        }
         return res;
     }
 };
