@@ -29,36 +29,36 @@ private:
         }
     }
     
-    int getNextIndex(string s, unordered_map<string, int> &mp, int wordSize, int n){
-        unordered_map<string, int> mp2 = mp;
-        string temp = "";
-        for(int i = 0; i < n; i += wordSize){
-            temp = s.substr(i, wordSize);
-            if(mp2.find(temp) == mp2.end()){
-                return i + 1;
-            }
-            mp2[temp]--;
-            if(mp2[temp] == 0){
-                mp2.erase(temp);
-            }
-        }
-        return n;
-    }
-    bool check(string &s, unordered_map<string, int> &mp, int wordSize, int n){
-        unordered_map<string, int> mp2 = mp;
-        string temp = "";
-        for(int i = 0; i < n; i += wordSize){
-            temp = s.substr(i, wordSize);
-            if(mp2.find(temp) == mp2.end()){
-                return false;
-            }
-            mp2[temp]--;
-            if(mp2[temp] == 0){
-                mp2.erase(temp);
-            }
-        }
-        return true;
-    }
+    // int getNextIndex(string s, unordered_map<string, int> &mp, int wordSize, int n){
+    //     unordered_map<string, int> mp2 = mp;
+    //     string temp = "";
+    //     for(int i = 0; i < n; i += wordSize){
+    //         temp = s.substr(i, wordSize);
+    //         if(mp2.find(temp) == mp2.end()){
+    //             return i + 1;
+    //         }
+    //         mp2[temp]--;
+    //         if(mp2[temp] == 0){
+    //             mp2.erase(temp);
+    //         }
+    //     }
+    //     return n;
+    // }
+    // bool check(string &s, unordered_map<string, int> &mp, int wordSize, int n){
+    //     unordered_map<string, int> mp2 = mp;
+    //     string temp = "";
+    //     for(int i = 0; i < n; i += wordSize){
+    //         temp = s.substr(i, wordSize);
+    //         if(mp2.find(temp) == mp2.end()){
+    //             return false;
+    //         }
+    //         mp2[temp]--;
+    //         if(mp2[temp] == 0){
+    //             mp2.erase(temp);
+    //         }
+    //     }
+    //     return true;
+    // }
 public:
     vector<int> findSubstring(string s, vector<string>& words) {
         int wordsN = words.size();
