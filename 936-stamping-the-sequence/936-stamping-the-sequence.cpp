@@ -1,24 +1,33 @@
 class Solution {
 public:
     vector<int> movesToStamp(string stamp, string target) {
-        vector<int> res;
-        int total_stamp = 0, turn_stamp = -1;
-        while (turn_stamp) {
-          turn_stamp = 0;
-          for (int sz = stamp.size(); sz > 0; --sz) 
-              for (int i = 0; i <= stamp.size() - sz; ++i) {
-                  string new_stamp = string(i, '*') + stamp.substr(i, sz) + string(stamp.size() - sz - i, '*');
-                  auto pos = target.find(new_stamp);
-                  while (pos != string::npos) {
-                      res.push_back(pos);
-                      turn_stamp += sz;
-                      fill(begin(target) + pos, begin(target) + pos + stamp.size(), '*');
-                      pos = target.find(new_stamp);
-                  }
-              }
-          total_stamp += turn_stamp;
+        vector<int> ans;
+        vector<int> output;
+        string str = target;
+        string aim(target.length(),'*');
+        while(str != aim){
+            int tmp = remove(str,stamp);
+            if(tmp == str.length()) return output;
+            ans.push_back(tmp);
         }
-        reverse(begin(res), end(res));
-        return total_stamp == target.size() ? res : vector<int>();
+        for(int iter=ans.size()-1;iter>=0;--iter) output.push_back(ans[iter]);
+        return output;
+    }
+    int remove(string& str, string stamp){
+        for(int iter=0;iter<str.length();++iter){
+            int jter=0,tmp=iter;
+            bool flag=false;
+            while(jter<stamp.length() && tmp<str.length() && (str[tmp]=='*' || str[tmp]==stamp[jter])){
+                if(str[tmp]==stamp[jter]) flag=true;
+                tmp++;
+                jter++;
+            }
+            if(jter==stamp.length() && flag){
+                for(int kter=0;kter<stamp.length();++kter)
+                    str[iter+kter]='*';
+                return iter;
+            }
+        }
+        return str.length();
     }
 };
