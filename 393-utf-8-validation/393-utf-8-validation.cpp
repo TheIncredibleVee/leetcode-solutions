@@ -31,7 +31,7 @@ public:
                     return false;
                 }
                 int next_val = data[i];
-                if(!(next_val & (1<<7)) || (next_val & (1<<(7-1)))){
+                if(!(next_val & (1<<7)) || (next_val & (1<<6))){
                     return false;
                 }
             }
